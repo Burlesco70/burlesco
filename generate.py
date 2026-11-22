@@ -85,6 +85,7 @@ def main():
 
     # pagina di benvenuto (se presente nella root)
     idx_src = os.path.join(ROOT, 'index.html')
+    repo_zip_name = None
     if os.path.isfile(idx_src):
         shutil.copy(idx_src, os.path.join(OUT, 'index.html'))
 
@@ -93,7 +94,19 @@ def main():
         version = read_version(addon_dir)
         count = make_zip(addon_dir, version)
         elements.append(addon_element(addon_dir))
+        zname = '%s-%s.zip' % (addon_dir, version)
+        if addon_dir == 'repository.burlesco':
+            repo_zip_name = zname
         print('  %-28s v%s  (%d file)' % (addon_dir, version, count))
+
+    # copia lo zip del repository anche alla radice: cosi' l'utente lo vede
+    # navigando la sorgente in "Installa da file ZIP" (GitHub Pages non ha
+    # la lista cartelle, Kodi legge i link dall'index.html).
+    if repo_zip_name:
+        shutil.copy(
+            os.path.join(OUT, 'repository.burlesco', repo_zip_name),
+            os.path.join(OUT, repo_zip_name),
+        )
 
     addons_xml = (
         '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n'
