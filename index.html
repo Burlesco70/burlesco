@@ -5,23 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Burlesco — Repository Kodi</title>
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; color: #222; }
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 40px auto; padding: 0 16px; color: #222; line-height: 1.5; }
     code { background: #f2f2f2; padding: 2px 6px; border-radius: 4px; }
     a { color: #0a7; }
+    .badge { display:inline-block; background:#0a7; color:#fff; padding:2px 8px; border-radius:6px; font-size:13px; }
+    li { margin: 4px 0; }
   </style>
 </head>
 <body>
   <h1>Burlesco — Repository Kodi</h1>
-  <p>Repository sorgente per installare e aggiornare gli add-on Kodi di Burlesco.</p>
+  <p>Repository sorgente Kodi per installare e aggiornare automaticamente
+     gli add-on di Burlesco.</p>
 
-  <!-- Link che Kodi mostra navigando la sorgente in "Installa da file ZIP" -->
-  <h2>Installa il repository</h2>
+  <h2>Add-on disponibile</h2>
+  <p><strong>Castellano - TV spagnola</strong> <span class="badge">plugin.video.castellano</span><br>
+     Per imparare lo spagnolo guardando la TV spagnola. Include:</p>
   <ul>
-    <li><a href="repository.burlesco-1.0.0.zip">repository.burlesco-1.0.0.zip</a></li>
+    <li>Canali RTVE in diretta (La 1, La 2, Teledeporte, 24h, Clan)</li>
+    <li>Canali TDT per categoria (con filtro dei feed solo-Spagna)</li>
+    <li>Pluto TV Spagna</li>
+    <li>Plex Spagna (per categoria, con token personale opzionale)</li>
+    <li>FAST Spagna (sperimentale)</li>
+    <li>RTVE on-demand con sottotitoli in spagnolo</li>
   </ul>
 
   <h2>URL da aggiungere come sorgente in Kodi</h2>
   <p><code>https://Burlesco70.github.io/burlesco</code></p>
-  <p>Poi: Add-on &rarr; Installa da file ZIP &rarr; sorgente Burlesco &rarr;
-     <code>repository.burlesco-1.0.0.zip</code>.</p>
+
+  <h2>Come installare</h2>
+  <ol>
+    <li>In Kodi: Sistema &rarr; Impostazioni &rarr; Add-on &rarr; Origini &rarr;
+        Aggiungi sorgente file &rarr; incolla l'URL sopra &rarr; nome "Burlesco".</li>
+    <li>Installa il repository:
+        <a href="repository.burlesco-1.0.0.zip">repository.burlesco-1.0.0.zip</a>.</li>
+    <li>Add-on &rarr; Installa da repository &rarr; Burlesco &rarr;
+        Castellano &rarr; Installa.</li>
+  </ol>
+  <p>Da qui gli aggiornamenti sono automatici.</p>
+
+  <p style="margin-top:30px;font-size:13px;color:#666;">
+    Progetto personale a scopo didattico. Licenza GPL-3.0.
+    Gli stream appartengono ai rispettivi titolari.
+  </p>
 </body></html>
