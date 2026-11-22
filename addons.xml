@@ -1,4 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addons>
+<addon id="repository.burlesco"
+       name="Burlesco Repository"
+       version="1.0.0"
+       provider-name="Burlesco70">
+  <requires>
+    <import addon="xbmc.addon.repository" version="1.0.0"/>
+  </requires>
+  <extension point="xbmc.addon.repository"
+             name="Burlesco"
+             path="https://Burlesco70.github.io/burlesco">
+    <dir>
+      <info compressed="false">https://Burlesco70.github.io/burlesco/addons.xml</info>
+      <checksum>https://Burlesco70.github.io/burlesco/addons.xml.md5</checksum>
+      <datadir zip="true">https://Burlesco70.github.io/burlesco/</datadir>
+    </dir>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="it">Repository di Burlesco (add-on Kodi)</summary>
+    <summary lang="en">Burlesco repository (Kodi add-ons)</summary>
+    <summary lang="es">Repositorio de Burlesco (complementos Kodi)</summary>
+    <description lang="it">Repository sorgente per installare e aggiornare automaticamente gli add-on Kodi di Burlesco (es. Castellano - TV spagnola).</description>
+    <description lang="en">Source repository to install and automatically update Burlesco's Kodi add-ons (e.g. Castellano - Spanish TV).</description>
+    <description lang="es">Repositorio fuente para instalar y actualizar automáticamente los complementos Kodi de Burlesco (p. ej. Castellano - TV española).</description>
+    <platform>all</platform>
+    <license>GPL-3.0-only</license>
+    <assets>
+      <icon>icon.png</icon>
+    </assets>
+  </extension>
+</addon>
 <addon id="plugin.video.castellano"
        name="Castellano - TV spagnola"
        version="1.0.0"
@@ -32,3 +63,4 @@
     </assets>
   </extension>
 </addon>
+</addons>
