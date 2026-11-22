@@ -1,0 +1,42 @@
+name: Publish Kodi Repository (GitHub Pages)
+
+# Rigenera addons.xml + zip e pubblica il repository Kodi su GitHub Pages.
+# Si attiva a ogni push su main (o manualmente).
+#
+# URL del repository per Kodi:
+#   https://Burlesco70.github.io/burlesco
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Generate repository (addons.xml + zips)
+        run: python generate.py
+
+      - name: List output
+        run: find . -maxdepth 2 -name '*.zip' -o -name 'addons.xml*' | sort
+
+      - name: Deploy to GitHub Pages (gh-pages)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          publish_branch: gh-pages
+          keep_files: false
