@@ -81,6 +81,12 @@ def make_source_zip(addon_dir, version):
     return out_zip
 
 
+def version_tuple(v):
+    """Converte '1.0.10' in (1, 0, 10) per un confronto numerico affidabile."""
+    parts = re.split(r'[.\-+]', v)
+    return tuple(int(p) if p.isdigit() else 0 for p in parts)
+
+
 def find_binary_zip(addon_id):
     d = os.path.join(ROOT, addon_id)
     if not os.path.isdir(d):
@@ -89,8 +95,13 @@ def find_binary_zip(addon_id):
     if not zips:
         sys.exit('Nessuno zip in %s/ (esegui build.py nel progetto plugin_kodi '
                  'e copia qui lo zip)' % addon_id)
-    # se piu' zip, prendi quello col nome piu' lungo (versione piu' specifica)
-    zips.sort(key=len, reverse=True)
+
+    def version_of(fn):
+        m = re.match(r'%s-(.+)\.zip$' % re.escape(addon_id), fn)
+        return m.group(1) if m else '0'
+
+    # se piu' zip, prendi quello con la VERSIONE piu' alta (non il nome piu' lungo)
+    zips.sort(key=lambda fn: version_tuple(version_of(fn)), reverse=True)
     return os.path.join(d, zips[0])
 
 
